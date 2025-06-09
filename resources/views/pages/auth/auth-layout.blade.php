@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-50">
+<html lang="ar" class="h-full bg-gray-50">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="h-full" dir="rtl">
-    <div class="justify-center items-center h-screen">
+<body class="flex flex-col min-h-screen h-full" dir="rtl">
+    <main class="flex-grow justify-center items-center h-screen">
         {{ $slot }}
-    </div>
+    </main>
+    @include('pages.partials.footer')
 </body>
 
 </html>

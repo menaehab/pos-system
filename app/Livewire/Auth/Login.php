@@ -5,10 +5,10 @@ namespace App\Livewire\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
 #[Layout('pages.auth.auth-layout')]
