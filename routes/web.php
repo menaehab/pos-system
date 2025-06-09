@@ -1,9 +1,10 @@
 <?php
 
-use App\Livewire\Home;
+use App\Livewire\HomePage;
 use Livewire\Volt\Volt;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
+use App\Livewire\Categories\CategoryPage;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,9 +15,13 @@ Route::post('logout', Logout::class)->name('logout');
 // login
 Route::get('login', Login::class)->name('login');
 
-// home
 Route::middleware('auth')->group(function () {
-    Route::get('/', Home::class)->name('home');
+
+    // home
+    Route::get('/', HomePage::class)->name('home');
+
+    // categories
+    Route::get('categories', CategoryPage::class)->name('categories');
 });
 
 

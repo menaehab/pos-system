@@ -13,4 +13,9 @@ return [
     'reports' => 'التقارير',
     'settings' => 'الاعدادات',
     'categories' => 'الأقسام',
+    'add_category' => 'إضافة قسم',
+    'name' => 'الأسم',
+    'add' => 'إضافة',
+    'close' => 'إغلاق',
+    'category_added_successfully' => 'تم إضافة القسم بنجاح'
     ];

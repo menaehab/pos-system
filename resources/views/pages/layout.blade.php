@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" class="bg-gray-50 text-black">
+<html lang="ar" class="bg-gray-100 text-black">
 
 @include('pages.partials.head')
 
