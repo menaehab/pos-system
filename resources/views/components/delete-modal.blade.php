@@ -1,5 +1,5 @@
 <!-- Modal Overlay & Content -->
-<div wire:ignore id="delete-modal" class="fixed inset-0 z-50 hidden">
+<div wire:ignore.self id="delete-modal" class="fixed inset-0 z-50 hidden">
     <!-- Overlay -->
     <div id="modal-overlay" class="absolute inset-0 bg-black/50"></div>
 

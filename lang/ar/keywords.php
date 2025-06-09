@@ -28,4 +28,8 @@ return [
     'delete' => 'حذف',
     'are_you_sure' => 'هل أنت متأكد؟',
     'delete_category' => 'حذف القسم',
+    'error_occurred' => 'حدث خطأ',
+    'name_is_required' => 'الاسم مطلوب',
+    'name_must_be_a_string' => 'الاسم يجب أن يكون نصاً',
+    'name_must_not_be_greater_than_255_characters' => 'الاسم يجب أن لا يتجاوز 255 حرف',
     ];

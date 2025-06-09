@@ -39,9 +39,3 @@
     </div>
     {{ $data->links() }}
 </div>
-
-<x-edit-modal wire:ignore title="{{ __('keywords.edit_category') }}" action="editCategory">
-    <x-text-input name="name" placeholder="{{ __('keywords.name') }}" />
-</x-edit-modal>
-
-<x-delete-modal wire:ignore title="{{ __('keywords.delete_category') }}" action="deleteCategory" />

@@ -1,5 +1,5 @@
 <!-- Modal Overlay & Content -->
-<div wire:ignore id="modal-wrapper" class="fixed inset-0 hidden z-50">
+<div wire:ignore.self id="modal-wrapper" class="fixed inset-0 hidden z-50">
     <!-- Overlay -->
     <div id="modal-overlay" class="absolute inset-0 bg-black/50"></div>
 
@@ -9,11 +9,11 @@
             <h2 class="text-xl font-bold mb-4">{{ $title }}</h2>
             {{ $slot }}
             <div class="flex justify-end gap-2">
-                <button type="button" wire:click="$dispatch('close-modal')"
+                <button type="button" wire:click="$dispatch('clear')"
                     class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors cursor-pointer">
                     {{ __('keywords.close') }}
                 </button>
-                <button type="submit" wire:click="$dispatch('close-modal')"
+                <button type="submit"
                     class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors cursor-pointer">
                     {{ __('keywords.add') }}
                 </button>
