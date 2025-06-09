@@ -19,5 +19,13 @@ return [
     'close' => 'إغلاق',
     'category_added_successfully' => 'تم إضافة القسم بنجاح',
     'actions' => 'الإجراءات',
-    'search' => 'ابحث ...'
+    'search' => 'ابحث ...',
+    'category_edited_successfully' => 'تم تعديل القسم بنجاح',
+    'category_deleted_successfully' => 'تم حذف القسم بنجاح',
+    'save' => 'حفظ',
+    'edit' => 'تعديل',
+    'edit_category' => 'تعديل القسم',
+    'delete' => 'حذف',
+    'are_you_sure' => 'هل أنت متأكد؟',
+    'delete_category' => 'حذف القسم',
     ];
