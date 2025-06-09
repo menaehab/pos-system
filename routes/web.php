@@ -1,23 +1,33 @@
 <?php
 
+use App\Livewire\Home;
 use Livewire\Volt\Volt;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+
 
 // logout
 Route::post('logout', Logout::class)->name('logout');
 
-
+// login
 Route::get('login', Login::class)->name('login');
 
+// home
+Route::middleware('auth')->group(function () {
+    Route::get('/', Home::class)->name('home');
+});
 
 
 
+
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
