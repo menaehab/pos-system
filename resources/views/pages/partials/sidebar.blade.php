@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" wire:navigate
+                    <a href="{{ route('categories') }}" wire:navigate
                         class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
                         <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-700"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -110,7 +110,7 @@
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit"
-                    class="w-full rounded-lg p-2 bg-blue-500 border-blue-500 hover:bg-blue-600 text-white">
+                    class="w-full rounded-lg p-2 transition-colors bg-blue-500 border-blue-500 hover:bg-blue-600 text-white cursor-pointer">
                     <i class=""></i>
                     <span class="">{{ __('keywords.logout') }}</span>
                 </button>

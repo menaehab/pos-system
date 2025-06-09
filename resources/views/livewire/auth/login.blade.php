@@ -34,7 +34,9 @@
 
             <div>
                 <button type="submit"
-                    class="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">{{ __('keywords.sign_in') }}</button>
+                    class="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"><span
+                        wire:loading.remove>{{ __('keywords.sign_in') }}</span><span wire:loading
+                        class="animate-spin h-5 w-5 border-b-2 border-white rounded-full mr-2"></span></button>
             </div>
         </form>
     </div>
