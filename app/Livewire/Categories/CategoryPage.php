@@ -11,6 +11,10 @@ class CategoryPage extends Component
     use WithPagination;
     public $search;
     public $name;
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
     public function rules()
     {
         return [
@@ -30,14 +34,10 @@ class CategoryPage extends Component
         $this->reset();
         session()->flash('success', __('keywords.category_added_successfully'));
     }
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
     public function render()
     {
-        // $categories = Category::where('name', 'like', '%' . $this->search . '%')->paginate(10);
-        return view('livewire.categories.category-page')->layout('pages.layout', [
+        $categories = Category::where('name', 'like', '%' . $this->search . '%')->paginate(10);
+        return view('livewire.categories.category-page', compact('categories'))->layout('pages.layout', [
             'title' => __('keywords.categories')
         ]);
     }

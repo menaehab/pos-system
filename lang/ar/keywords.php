@@ -17,5 +17,7 @@ return [
     'name' => 'الأسم',
     'add' => 'إضافة',
     'close' => 'إغلاق',
-    'category_added_successfully' => 'تم إضافة القسم بنجاح'
+    'category_added_successfully' => 'تم إضافة القسم بنجاح',
+    'actions' => 'الإجراءات',
+    'search' => 'ابحث ...'
     ];

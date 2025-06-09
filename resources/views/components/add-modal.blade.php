@@ -26,7 +26,7 @@
     const modalWrapper = document.getElementById('modal-wrapper');
     const modalOverlay = document.getElementById('modal-overlay');
 
-    function openModal() {
+    function addModal() {
         modalWrapper.classList.remove('hidden');
     }
 
