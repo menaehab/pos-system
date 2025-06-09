@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Livewire\Categories;
+namespace App\Livewire\Suppliers;
 
 use Livewire\Component;
-use App\Models\Category;
+use App\Models\Supplier;
 use Livewire\Attributes\On;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\SupplierRequest;
 
-class CategoryCreate extends Component
+class SupplierCreate extends Component
 {
     public $name = null;
+    public $phone = null;
     protected function rules()
     {
-        return (new CategoryRequest())->rules();
+        return (new SupplierRequest())->rules();
     }
 
     protected function messages()
     {
-        return (new CategoryRequest())->messages();
+        return (new SupplierRequest())->messages();
     }
     public function updated($propertyName)
     {
@@ -31,26 +32,27 @@ class CategoryCreate extends Component
     #[On('clear')]
     public function clear()
     {
-        $this->reset(['name']);
+        $this->reset(['name', 'phone']);
         $this->resetValidation();
         $this->dispatch('close-modal');
     }
-    public function addCategory()
+    public function addSupplier()
     {
         $this->validate();
 
-        Category::create([
+        Supplier::create([
             'name' => $this->name,
+            'phone' => $this->phone,
         ]);
 
-        $this->reset(['name']);
+        $this->reset(['name', 'phone']);
 
         $this->dispatch('close-modal');
-        session()->flash('success', __('keywords.category_added_successfully'));
+        session()->flash('success', __('keywords.supplier_added_successfully'));
         $this->dispatch('refresh');
     }
     public function render()
     {
-        return view('livewire.categories.category-create');
+        return view('livewire.suppliers.supplier-create');
     }
 }

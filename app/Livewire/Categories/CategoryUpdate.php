@@ -9,8 +9,8 @@ use App\Http\Requests\CategoryRequest;
 
 class CategoryUpdate extends Component
 {
-    public $name = '';
-    public $slug = '';
+    public $name = null;
+    public $slug = null;
     protected function rules()
     {
         return (new CategoryRequest())->rules();

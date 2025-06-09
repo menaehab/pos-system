@@ -32,4 +32,13 @@ return [
     'name_is_required' => 'الاسم مطلوب',
     'name_must_be_a_string' => 'الاسم يجب أن يكون نصاً',
     'name_must_not_be_greater_than_255_characters' => 'الاسم يجب أن لا يتجاوز 255 حرف',
+    'suppliers' => 'الموردين',
+    'phone' => 'الهاتف',
+    'add_supplier' => 'إضافة مورد',
+    'supplier_added_successfully' => 'تم إضافة المورد بنجاح',
+    'supplier_edited_successfully' => 'تم تعديل المورد بنجاح',
+    'supplier_deleted_successfully' => 'تم حذف المورد بنجاح',
+    'edit_supplier' => 'تعديل المورد',
+    'delete_supplier' => 'حذف المورد',
+    'not_available' => 'غير متاح',
     ];

@@ -8,7 +8,7 @@ use Livewire\Attributes\On;
 
 class CategoryDelete extends Component
 {
-    public $slug = '';
+    public $slug = null;
     #[On('deleteModal')]
     public function openDeleteModal($slug)
     {

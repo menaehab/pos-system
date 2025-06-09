@@ -1,11 +1,12 @@
 <?php
 
-use App\Livewire\HomePage;
 use Livewire\Volt\Volt;
+use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
-use App\Livewire\Categories\CategoryPage;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Suppliers\SupplierPage;
+use App\Livewire\Categories\CategoryPage;
 
 
 
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
 
     // categories
     Route::get('categories', CategoryPage::class)->name('categories');
+
+    // suppliers
+    Route::get('suppliers', SupplierPage::class)->name('suppliers');
 });
 
 
