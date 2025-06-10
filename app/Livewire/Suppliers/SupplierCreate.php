@@ -48,8 +48,8 @@ class SupplierCreate extends Component
         $this->reset(['name', 'phone']);
 
         $this->dispatch('close-modal');
+        $this->dispatch('supplierRefresh');
         session()->flash('success', __('keywords.supplier_added_successfully'));
-        $this->dispatch('refresh');
     }
     public function render()
     {

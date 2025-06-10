@@ -53,8 +53,8 @@ class SupplierUpdate extends Component
         $this->resetValidation();
 
         $this->dispatch('close-modal');
+        $this->dispatch('supplierRefresh');
         session()->flash('success', __('keywords.supplier_edited_successfully'));
-        $this->dispatch('refresh');
     }
     public function render()
     {

@@ -15,16 +15,13 @@ class SupplierDelete extends Component
         $supplier = Supplier::where('slug', $slug)->firstOrFail();
 
         $this->slug = $supplier->slug;
-
-        $this->dispatch('delete-modal');
     }
-
     public function deleteSupplier()
     {
         Supplier::where('slug', $this->slug)->firstOrFail()->delete();
         $this->dispatch('close-modal');
+        $this->dispatch('supplierRefresh');
         session()->flash('success', __('keywords.supplier_deleted_successfully'));
-        $this->dispatch('refresh');
     }
     public function render()
     {

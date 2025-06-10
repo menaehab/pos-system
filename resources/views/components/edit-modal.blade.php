@@ -1,7 +1,9 @@
 <!-- Modal Overlay & Content -->
-<div wire:ignore.self id="edit-modal" class="fixed inset-0 z-50 hidden">
+<div x-data="{ isOpen: false }" x-on:edit-modal.window="isOpen = true" x-on:close-modal.window="isOpen = false" x-show="isOpen"
+    @keydown.escape.window="isOpen = false" x-transition.opacity.duration.200ms id="edit-modal" class="fixed inset-0 z-50"
+    style="display: none;">
     <!-- Overlay -->
-    <div id="modal-overlay" class="absolute inset-0 bg-black/50"></div>
+    <div @click="isOpen = false" class="absolute inset-0 bg-black/50"></div>
 
     <!-- Modal Content -->
     <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
@@ -23,24 +25,3 @@
         </form>
     </div>
 </div>
-
-
-<script>
-    const editModal = document.getElementById('edit-modal');
-
-    function closeModal() {
-        editModal.classList.add('hidden');
-    }
-
-    function openModal() {
-        editModal.classList.remove('hidden');
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
-
-    window.addEventListener('edit-modal', openModal);
-
-    window.addEventListener('close-modal', closeModal);
-</script>

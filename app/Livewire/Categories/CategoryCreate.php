@@ -46,8 +46,8 @@ class CategoryCreate extends Component
         $this->reset(['name']);
 
         $this->dispatch('close-modal');
+        $this->dispatch('categoryRefresh');
         session()->flash('success', __('keywords.category_added_successfully'));
-        $this->dispatch('refresh');
     }
     public function render()
     {

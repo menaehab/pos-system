@@ -5,17 +5,17 @@ namespace App\Livewire\Suppliers;
 use Livewire\Component;
 use App\Models\Supplier;
 use Livewire\WithPagination;
-use App\Http\Requests\SupplierRequest;
 
 class SupplierPage extends Component
 {
     use WithPagination;
     public $search = '';
-    protected $listeners = ['refresh' => '$refresh'];
+    protected $listeners = ['supplierRefresh' => '$refresh'];
 
     public function updatingSearch()
     {
         $this->resetPage();
+        $this->dispatch('supplierRefresh');
     }
 
     public function render()

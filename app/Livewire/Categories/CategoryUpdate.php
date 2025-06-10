@@ -50,8 +50,8 @@ class CategoryUpdate extends Component
         $this->resetValidation();
 
         $this->dispatch('close-modal');
+        $this->dispatch('categoryRefresh');
         session()->flash('success', __('keywords.category_edited_successfully'));
-        $this->dispatch('refresh');
     }
     public function render()
     {

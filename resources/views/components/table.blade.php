@@ -16,11 +16,12 @@
             </thead>
             <tbody>
                 @foreach ($data as $key => $item)
-                    <tr class="border-b hover:bg-blue-100" key={{ $item->id }}>
+                    <tr class="border-b hover:bg-blue-100" wire:key={{ $item->id }}>
                         <td class="text-center p-3 px-5"><span>{{ $key + $data->firstItem() }}</span></td>
                         @foreach ($columns as $column)
                             <td class="text-center p-3 px-5">
-                                <span>{{ $item->$column ?? __('keywords.not_available') }}</span></td>
+                                <span>{{ $item->$column ?? __('keywords.not_available') }}</span>
+                            </td>
                         @endforeach
                         <td class="text-center p-3 px-5 flex justify-center gap-2">
                             <a wire:click="$dispatch('editModal', { slug: '{{ $item->slug }}' })"
