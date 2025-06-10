@@ -3,11 +3,12 @@
     @keydown.escape.window="isOpen = false" x-transition.opacity.duration.200ms x-on:close-modal.window="isOpen = false"
     class="fixed inset-0 z-50" style="display: none;">
     <!-- Overlay -->
-    <div @click="isOpen = false" class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute inset-0 bg-black/50"></div>
 
     <!-- Modal Content -->
     <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
-        <form wire:submit.prevent="{{ $action }}" class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+        <form @click.away="isOpen = false" wire:submit="{{ $action }}"
+            class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
             <h2 class="text-xl font-bold mb-4">{{ $title }}</h2>
             {{ $slot }}
             <div class="flex justify-end gap-2">

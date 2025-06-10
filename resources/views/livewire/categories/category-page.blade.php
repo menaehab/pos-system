@@ -5,7 +5,16 @@
 
     <x-success-alert />
 
-    <x-table :data="$categories" :columns="['name']" />
+    <x-table :data="$categories" :columns="['name', 'supplier']">
+        @foreach ($categories as $key => $category)
+            <tr class="border-b hover:bg-blue-100" wire:key={{ $category->id }}>
+                <x-table-cell :value="$key + $categories->firstItem()" />
+                <x-table-cell :value="$category->name ?? __('keywords.not_available')" />
+                <x-table-cell :value="$category->supplier->name ?? __('keywords.not_available')" />
+                <x-table-actions :slug="$category->slug" />
+            </tr>
+        @endforeach
+    </x-table>
 
     <livewire:categories.category-update />
 

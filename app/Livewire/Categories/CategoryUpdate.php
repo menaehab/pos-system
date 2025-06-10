@@ -4,6 +4,7 @@ namespace App\Livewire\Categories;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Supplier;
 use Livewire\Attributes\On;
 use App\Http\Requests\CategoryRequest;
 
@@ -11,6 +12,7 @@ class CategoryUpdate extends Component
 {
     public $name = null;
     public $slug = null;
+    public $supplier_id = null;
     protected function rules()
     {
         return (new CategoryRequest())->rules();
@@ -33,6 +35,7 @@ class CategoryUpdate extends Component
 
         $this->slug = $category->slug;
         $this->name = $category->name;
+        $this->supplier_id = $category->supplier_id;
 
         $this->dispatch('edit-modal');
     }
@@ -44,9 +47,10 @@ class CategoryUpdate extends Component
         $category = Category::where('slug', $this->slug)->firstOrFail();
         $category->update([
             'name' => $this->name,
+            'supplier_id' => $this->supplier_id,
         ]);
 
-        $this->reset(['name', 'slug']);
+        $this->reset();
         $this->resetValidation();
 
         $this->dispatch('close-modal');
@@ -55,6 +59,7 @@ class CategoryUpdate extends Component
     }
     public function render()
     {
-        return view('livewire.categories.category-update');
+        $suppliers = Supplier::lazy();
+        return view('livewire.categories.category-update', compact('suppliers'));
     }
 }

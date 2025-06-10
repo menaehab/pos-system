@@ -6,5 +6,6 @@
 
     <x-add-modal title="{{ __('keywords.add_category') }}" action="addCategory">
         <x-text-input name="name" placeholder="{{ __('keywords.name') }}" />
+        <x-select name="supplier_id" placeholder="{{ __('keywords.supplier') }}" :options="$suppliers" />
     </x-add-modal>
 </div>

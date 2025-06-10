@@ -4,12 +4,14 @@ namespace App\Livewire\Categories;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Supplier;
 use Livewire\Attributes\On;
 use App\Http\Requests\CategoryRequest;
 
 class CategoryCreate extends Component
 {
     public $name = null;
+    public $supplier_id = null;
     protected function rules()
     {
         return (new CategoryRequest())->rules();
@@ -41,6 +43,7 @@ class CategoryCreate extends Component
 
         Category::create([
             'name' => $this->name,
+            'supplier_id' => $this->supplier_id,
         ]);
 
         $this->reset(['name']);
@@ -51,6 +54,7 @@ class CategoryCreate extends Component
     }
     public function render()
     {
-        return view('livewire.categories.category-create');
+        $suppliers = Supplier::lazy();
+        return view('livewire.categories.category-create',compact('suppliers'));
     }
 }

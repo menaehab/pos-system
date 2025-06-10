@@ -49,7 +49,7 @@ class SupplierUpdate extends Component
             'phone' => $this->phone,
         ]);
 
-        $this->reset(['name', 'slug']);
+        $this->reset();
         $this->resetValidation();
 
         $this->dispatch('close-modal');

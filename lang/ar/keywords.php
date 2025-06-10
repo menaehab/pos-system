@@ -41,4 +41,7 @@ return [
     'edit_supplier' => 'تعديل المورد',
     'delete_supplier' => 'حذف المورد',
     'not_available' => 'غير متاح',
+    'supplier' => 'المورد',
+    'supplier_is_required' => 'المورد مطلوب',
+    'supplier_not_found' => 'المورد غير موجود',
     ];

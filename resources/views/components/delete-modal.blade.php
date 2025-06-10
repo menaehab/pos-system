@@ -12,7 +12,7 @@ window.addEventListener('close-modal', () => {
     <!-- Modal Content -->
     <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div @click.away="isOpen = false" class="w-full max-w-md">
-            <form wire:submit.prevent="{{ $action }}" class="bg-white rounded-lg shadow-lg w-full p-6">
+            <form wire:submit="{{ $action }}" class="bg-white rounded-lg shadow-lg w-full p-6">
                 <h2 class="text-xl font-bold mb-4">{{ $title }}</h2>
                 <p>{{ __('keywords.are_you_sure') }}</p>
 

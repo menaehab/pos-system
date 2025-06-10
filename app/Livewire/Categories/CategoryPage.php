@@ -22,6 +22,9 @@ class CategoryPage extends Component
     public function render()
     {
         $categories = Category::where('name', 'like', "%{$this->search}%")
+            ->whereHas('supplier', function ($query) {
+                $query->where('name', 'like', "%{$this->search}%");
+            })
             ->latest()
             ->paginate(10);
 

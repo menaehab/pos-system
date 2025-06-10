@@ -5,7 +5,16 @@
 
     <x-success-alert />
 
-    <x-table :data="$suppliers" :columns="['name', 'phone']" />
+    <x-table :data="$suppliers" :columns="['name', 'phone']">
+        @foreach ($suppliers as $key => $supplier)
+            <tr class="border-b hover:bg-blue-100" wire:key={{ $supplier->id }}>
+                <x-table-cell :value="$key + $suppliers->firstItem()" />
+                <x-table-cell :value="$supplier->name ?? __('keywords.not_available')" />
+                <x-table-cell :value="$supplier->phone ?? __('keywords.not_available')" />
+                <x-table-actions :slug="$supplier->slug" />
+            </tr>
+        @endforeach
+    </x-table>
 
     <livewire:suppliers.supplier-update />
 

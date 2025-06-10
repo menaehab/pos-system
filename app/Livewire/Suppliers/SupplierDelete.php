@@ -19,6 +19,8 @@ class SupplierDelete extends Component
     public function deleteSupplier()
     {
         Supplier::where('slug', $this->slug)->firstOrFail()->delete();
+
+        $this->reset('slug');
         $this->dispatch('close-modal');
         $this->dispatch('supplierRefresh');
         session()->flash('success', __('keywords.supplier_deleted_successfully'));
