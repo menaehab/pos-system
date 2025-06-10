@@ -7,16 +7,18 @@ use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Suppliers\SupplierPage;
 use App\Livewire\Categories\CategoryPage;
+use App\Livewire\SubCategories\SubCategoryPage;
 
 
 
-// logout
-Route::post('logout', Logout::class)->name('logout');
 
 // login
 Route::get('login', Login::class)->name('login');
 
 Route::middleware('auth')->group(function () {
+
+    // logout
+    Route::post('logout', Logout::class)->name('logout');
 
     // home
     Route::get('/', HomePage::class)->name('home');
@@ -26,6 +28,9 @@ Route::middleware('auth')->group(function () {
 
     // suppliers
     Route::get('suppliers', SupplierPage::class)->name('suppliers');
+
+    // sub categories
+    Route::get('sub-categories', SubCategoryPage::class)->name('sub-categories');
 });
 
 
