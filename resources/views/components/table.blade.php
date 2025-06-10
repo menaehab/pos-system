@@ -15,25 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $key => $item)
-                    <tr class="border-b hover:bg-blue-100">
-                        <td class="text-center p-3 px-5"><span>{{ $key + $data->firstItem() }}</span></td>
-                        @foreach ($columns as $column)
-                            <td class="text-center p-3 px-5"><span>{{ $item->$column }}</span></td>
-                        @endforeach
-                        <td class="text-center p-3 px-5 flex justify-center gap-2">
-                            <a wire:click="$dispatch('editModal', { slug: '{{ $item->slug }}' })"
-                                class="text-sm bg-yellow-500 hover:bg-yellow-700 text-white py-1 px-2 rounded cursor-pointer">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-
-                            <a wire:click="$dispatch('deleteModal', { slug: '{{ $item->slug }}' })"
-                                class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded cursor-pointer">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
+                {{ $slot }}
             </tbody>
         </table>
     </div>

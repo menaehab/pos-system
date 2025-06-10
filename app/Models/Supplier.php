@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Supplier extends Model
 {
-    use HasFactory, HasSlug;
+    use HasSlug,HasFactory;
     protected $guarded = ['id'];
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -23,8 +24,8 @@ class Category extends Model
         return 'slug';
     }
 
-    public function supplier()
+    public function categories()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->hasMany(Category::class);
     }
 }

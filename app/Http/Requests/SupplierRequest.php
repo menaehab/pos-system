@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class SupplierRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +23,19 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'supplier_id' => 'required|exists:suppliers,id',
+            'phone' => 'nullable|string|min:11|max:11',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'name.required' => __('keywords.name_is_required'),
-            'name.string' => __('keywords.name_must_be_a_string'),
-            'name.max' => __('keywords.name_must_not_be_greater_than_255_characters'),
-            'supplier_id.required' => __('keywords.supplier_is_required'),
-            'supplier_id.exists' => __('keywords.supplier_not_found'),
+            'name.required' => 'الاسم مطلوب',
+            'name.string' => 'الاسم يجب أن يكون نصاً',
+            'name.max' => 'الاسم يجب أن لا يتجاوز 255 حرف',
+            'phone.string' => 'الهاتف يجب أن يكون نصاً',
+            'phone.min' => 'الهاتف يجب أن يحتوي على 11 رقم',
+            'phone.max' => 'الهاتف يجب أن يحتوي على 11 رقم',
         ];
     }
 }

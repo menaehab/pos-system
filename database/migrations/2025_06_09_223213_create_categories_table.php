@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete();
             $table->timestamps();
         });
     }
