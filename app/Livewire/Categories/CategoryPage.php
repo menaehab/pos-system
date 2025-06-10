@@ -27,7 +27,6 @@ class CategoryPage extends Component
             })
             ->latest()
             ->paginate(10);
-
         return view('livewire.categories.category-page', compact('categories'))
             ->layout('pages.layout', [
                 'title' => __('keywords.categories')

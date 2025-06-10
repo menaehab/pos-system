@@ -44,4 +44,18 @@ return [
     'supplier' => 'المورد',
     'supplier_is_required' => 'المورد مطلوب',
     'supplier_not_found' => 'المورد غير موجود',
+    'category_id_required' => 'القسم مطلوب',
+    'category_id_exists' => 'القسم غير موجود',
+    'name_required' => 'الاسم مطلوب',
+    'name_string' => 'الاسم يجب أن يكون نصاً',
+    'name_max' => 'الاسم يجب أن لا يتجاوز 255 حرف',
+    'sub_category_added_successfully' => 'تم إضافة الفئة بنجاح',
+    'sub_category_edited_successfully' => 'تم تعديل الفئة بنجاح',
+    'sub_category_deleted_successfully' => 'تم حذف الفئة بنجاح',
+    'edit_sub_category' => 'تعديل الفئة',
+    'delete_sub_category' => 'حذف الفئة',
+    'sub_category' => 'الفئة',
+    'sub_categories' => 'الفئات',
+    'add_sub_category' => 'إضافة فئة',
+    'category' => 'القسم'
     ];
