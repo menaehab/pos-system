@@ -7,11 +7,10 @@ use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class SubCategory extends Model
+class Product extends Model
 {
-    use HasFactory,HasSlug;
+    use HasSlug,HasFactory;
     protected $guarded = ['id'];
-
 
     public function getSlugOptions(): SlugOptions
     {
@@ -25,13 +24,8 @@ class SubCategory extends Model
         return 'slug';
     }
 
-    public function category()
+    public function subCategory()
     {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(SubCategory::class);
     }
 }

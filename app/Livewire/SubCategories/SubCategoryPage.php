@@ -22,7 +22,7 @@ class SubCategoryPage extends Component
     public function render()
     {
         $subCategories = SubCategory::where('name', 'like', "%{$this->search}%")
-            ->whereHas('category', function ($query) {
+            ->orWhereHas('category', function ($query) {
                 $query->where('name', 'like', "%{$this->search}%");
             })
             ->latest()

@@ -5,6 +5,7 @@ use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Products\ProductPage;
 use App\Livewire\Suppliers\SupplierPage;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\SubCategories\SubCategoryPage;
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function () {
 
     // sub categories
     Route::get('sub-categories', SubCategoryPage::class)->name('sub-categories');
+
+    // products
+    Route::get('products', ProductPage::class)->name('products');
 });
 
 

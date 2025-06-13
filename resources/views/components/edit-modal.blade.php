@@ -7,7 +7,7 @@
     <!-- Modal Content -->
     <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
         <form @click.away="isOpen = false" wire:submit="{{ $action }}"
-            class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+            class="bg-white rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-6">
             <h2 class="text-xl font-bold mb-4">{{ $title }}</h2>
 
             {{ $slot }}
