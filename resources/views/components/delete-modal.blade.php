@@ -1,10 +1,6 @@
-<div x-data="{ isOpen: false }" x-init="window.addEventListener('deleteModal', () => {
-    isOpen = true;
-});
-window.addEventListener('close-modal', () => {
-    isOpen = false;
-});" x-show="isOpen" x-transition.opacity.duration.200ms
-    @keydown.escape.window="isOpen = false" id="delete-modal" class="fixed inset-0 z-50" style="display: none;">
+<div x-data="{ isOpen: false }" x-on:delete-modal.window="isOpen = true" x-on:close-modal.window="isOpen = false"
+    x-show="isOpen" x-transition.opacity.duration.200ms @keydown.escape.window="isOpen = false" id="delete-modal"
+    class="fixed inset-0 z-50" style="display: none;">
 
     <!-- Overlay -->
     <div @click="isOpen = false" class="absolute inset-0 bg-black/50"></div>

@@ -5,7 +5,7 @@
     </button>
 
     <x-add-modal title="{{ __('keywords.add_supplier') }}" action="addSupplier">
-        <x-text-input name="name" placeholder="{{ __('keywords.name') }}" />
-        <x-text-input name="phone" placeholder="{{ __('keywords.phone') }}" />
+        <x-input type="text" name="name" placeholder="{{ __('keywords.name') }}" />
+        <x-input type="text" name="phone" placeholder="{{ __('keywords.phone') }}" />
     </x-add-modal>
 </div>
