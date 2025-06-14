@@ -1,5 +1,5 @@
 <div>
-    <select class="w-full p-2 border rounded mb-4 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500"
+    <select class="w-full p-2 border rounded mt-4 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-500"
         name="{{ $name }}" id="{{ $name }}" wire:model.lazy="{{ $name }}">
         <option value="">{{ $placeholder }}</option>
         @foreach ($options as $option)
