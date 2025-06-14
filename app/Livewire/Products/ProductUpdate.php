@@ -112,7 +112,7 @@ class ProductUpdate extends Component
     }
     public function render()
     {
-        $subCategories = SubCategory::all();
+        $subCategories = SubCategory::where('category_id',$this->category_id)->get();
         $categories = Category::where('supplier_id',$this->supplier_id)->get();
         $suppliers = Supplier::all();
         return view('livewire.products.product-update', compact('subCategories','categories','suppliers'));
