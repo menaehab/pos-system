@@ -36,7 +36,7 @@
                 </div>
 
                 <div>
-                    <label>{{ __('keywords.price') }}</label>
+                    <label>{{ __('keywords.price_for_only_one') }}</label>
                     <input type="number" wire:model.lazy="items.{{ $index }}.price"
                         class="w-full border rounded p-2" />
                 </div>

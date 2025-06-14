@@ -61,40 +61,45 @@ class PurchaseUpdate extends Component
     {
         $this->validate();
 
-        $purchase = Purchase::where('id', $this->id)->first();
+        $purchase = Purchase::findOrFail($this->id);
 
+        // 1. Restore stock before deleting old items
         foreach ($purchase->items as $oldItem) {
             $product = Product::find($oldItem->product_id);
             if ($product) {
-                $product->quantity -= $oldItem->quantity;
+                $quantityToRestore = $oldItem->quantity * ($oldItem->cartoon_quantity && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1);
+                $product->quantity -= $quantityToRestore;
                 $product->save();
             }
         }
 
+        // 2. Delete old items
         $purchase->items()->delete();
 
+        // 3. Update purchase info
         $purchase->update([
-            'supplier_id' => $this->supplier_id,
+            'supplier_id'   => $this->supplier_id,
             'purchase_date' => $this->purchase_date,
-            'total_amount' => $this->total_amount,
-            'paid_amount' => $this->paid_amount,
-            'due_amount' => $this->due_amount,
-            'note' => $this->note,
+            'total_amount'  => $this->total_amount,
+            'paid_amount'   => $this->paid_amount,
+            'due_amount'    => $this->due_amount,
+            'note'          => $this->note,
         ]);
 
+        // 4. Add new items and update stock
         foreach ($this->items as $item) {
             $product = Product::find($item['product_id']);
 
-            $quantity = $item['quantity'] * ($this->cartoon_quantity && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1);
-
             $purchase->items()->create([
-                'product_id' => $item['product_id'],
-                'quantity' => $quantity,
-                'price' => $item['price'],
+                'product_id'       => $item['product_id'],
+                'quantity'         => $item['quantity'],
+                'price'            => $item['price'],
+                'cartoon_quantity' => $item['cartoon_quantity'],
             ]);
 
             if ($product) {
-                $product->quantity += $quantity;
+                $quantityToAdd = $item['quantity'] * ($item['cartoon_quantity'] && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1);
+                $product->quantity += $quantityToAdd;
                 $product->save();
             }
         }

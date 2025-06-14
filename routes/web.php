@@ -1,6 +1,5 @@
 <?php
 
-use App\Livewire\Purchases\PurchaseUpdate;
 use Livewire\Volt\Volt;
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
@@ -8,9 +7,11 @@ use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Products\ProductPage;
 use App\Livewire\Purchases\PurchasePage;
+use App\Livewire\Purchases\PurchaseShow;
 use App\Livewire\Suppliers\SupplierPage;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\Purchases\PurchaseCreate;
+use App\Livewire\Purchases\PurchaseUpdate;
 use App\Livewire\SubCategories\SubCategoryPage;
 
 // login
@@ -44,4 +45,7 @@ Route::middleware('auth')->group(function () {
 
     // purchase edit
     Route::get('purchases/{id}/edit', PurchaseUpdate::class)->name('purchases.edit');
+
+    // purchase show
+    Route::get('purchases/{id}/show', PurchaseShow::class)->name('purchases.show');
 });

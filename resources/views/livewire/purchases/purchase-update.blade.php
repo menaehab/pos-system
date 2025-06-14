@@ -1,5 +1,5 @@
 <div class="container mx-auto p-6">
-    <h1 class="text-5xl font-bold text-center my-6">{{ __('keywords.purchase_create') }}</h1>
+    <h1 class="text-5xl font-bold text-center my-6">{{ __('keywords.purchase_update') }}</h1>
 
     <form wire:submit.prevent="update">
         <x-select name="supplier_id" :options="$suppliers" :placeholder="__('keywords.supplier')" />
@@ -27,7 +27,7 @@
                 <div>
                     <label>{{ __('keywords.cartoon_quantity') }}</label>
                     <input type="checkbox" wire:model="items.{{ $index }}.cartoon_quantity"
-                        class="w-full border rounded p-2" />
+                        @if ($item['cartoon_quantity']) checked @endif class="w-full border rounded p-2" />
                 </div>
                 <div>
                     <label>{{ __('keywords.quantity') }}</label>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div>
-                    <label>{{ __('keywords.price') }}</label>
+                    <label>{{ __('keywords.price_for_only_one') }}</label>
                     <input type="number" wire:model="items.{{ $index }}.price"
                         class="w-full border rounded p-2" />
                 </div>
@@ -57,7 +57,7 @@
 
         <button type="submit"
             class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors mt-4">
-            {{ __('keywords.add') }}
+            {{ __('keywords.update') }}
         </button>
     </form>
 </div>

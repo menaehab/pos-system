@@ -124,4 +124,11 @@ return [
     'cartoon_quantity' => 'الكمية بالكرتونة',
     'purchase_update' => 'تعديل المشتريات',
     'purchase_updated_successfully' => 'تم تعديل المشتريات بنجاح',
+    'yes' => 'نعم',
+    'no' => 'لا',
+    'price_for_only_one' => 'سعر للقطعة الواحدة',
+    'update' => 'تعديل',
+    'purchase_details' => 'تفاصيل المشتريات',
+    'delete_purchase' => 'حذف المشتريات',
+    'purchase_deleted_successfully' => 'تم حذف المشتريات بنجاح',
 ];

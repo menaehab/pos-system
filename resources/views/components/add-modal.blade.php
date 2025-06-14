@@ -11,7 +11,7 @@
             class="bg-white rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-6">
             <h2 class="text-xl font-bold mb-4">{{ $title }}</h2>
             {{ $slot }}
-            <div class="flex justify-end gap-2">
+            <div class="flex justify-end gap-2 mt-4">
                 <button type="button" @click="isOpen = false"
                     class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors cursor-pointer">
                     {{ __('keywords.close') }}

@@ -62,12 +62,13 @@ class PurchaseCreate extends Component
             $product = Product::where('id',$item['product_id'])->first();
             $purchase->items()->create([
                 'product_id' => $item['product_id'],
-                'quantity' => $item['quantity'] * ($this->cartoon_quantity && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1),
+                'quantity' => $item['quantity'],
                 'price' => $item['price'],
+                'cartoon_quantity' => $item['cartoon_quantity'],
             ]);
 
             $product->update([
-                'quantity' => $product->quantity + $item['quantity'] * ($this->cartoon_quantity && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1),
+                'quantity' => $product->quantity + $item['quantity'] * ($item['cartoon_quantity'] && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1),
             ]);
             $product->save();
         }
