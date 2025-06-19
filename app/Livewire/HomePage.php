@@ -15,6 +15,7 @@ class HomePage extends Component
     use WithPagination;
     public $search = '';
     public $customer_id;
+    public $products;
     public function updatedSearch()
     {
         $this->resetPage();
@@ -62,6 +63,17 @@ class HomePage extends Component
         if (empty($cart)) {
             return;
         }
+
+        $productsData = [];
+        foreach ($cart as $item) {
+            $productsData[] = [
+                'id' => $item['id'],
+                'quantity' => $item['quantity']
+            ];
+        }
+
+        $this->products = $productsData;
+
         $this->validate();
 
         $total = 0;
@@ -69,11 +81,12 @@ class HomePage extends Component
             'total_price' => $total,
             'user_id' => auth()->user()->id,
             'customer_id' => $this->customer_id,
-    ]);
+        ]);
 
         foreach ($cart as $item) {
             $product = Product::findOrFail($item['id']);
-            $sale->products()->attach($product->id, [
+            $sale->saleItems()->create([
+                'product_id' => $product->id,
                 'quantity' => $item['quantity'],
                 'price' => $product->sell_price,
             ]);
@@ -82,14 +95,18 @@ class HomePage extends Component
             ]);
             $total += $product->sell_price * $item['quantity'];
         }
+
         $sale->update([
             'total_price' => $total,
         ]);
+
         Session::put('cart', []);
+
+        $this->customer_id = null;
     }
     public function render()
     {
-        $products = Product::where('name', 'like', "%{$this->search}%")
+        $allProducts = Product::where('name', 'like', "%{$this->search}%")
         ->orWhere('barcode', 'like', "%{$this->search}%")
         ->orWhereHas('subCategory', function ($query) {
             $query->where('name', 'like', "%{$this->search}%");
@@ -105,6 +122,6 @@ class HomePage extends Component
         $customers = Customer::all();
         $cart = Session::get('cart', []);
         $total = array_sum(array_column($cart, 'price')) * array_sum(array_column($cart, 'quantity'));
-        return view('livewire.home-page', compact('products', 'cart', 'total', 'customers'))->layout('pages.layout', ['title' => __('keywords.home_page')]);
+        return view('livewire.home-page', compact('allProducts', 'cart', 'total', 'customers'))->layout('pages.layout', ['title' => __('keywords.home_page')]);
     }
 }

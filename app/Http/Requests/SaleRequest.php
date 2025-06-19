@@ -22,7 +22,7 @@ class SaleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'products' => 'required|array',
+            'products' => 'required|array|min:1',
             'products.*.id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|numeric|min:1',
             'customer_id' => 'nullable|exists:customers,id',
@@ -38,6 +38,7 @@ class SaleRequest extends FormRequest
             'products.*.quantity.numeric' => __('keywords.quantity_numeric'),
             'products.*.quantity.min' => __('keywords.quantity_min'),
             'customer_id.exists' => __('keywords.customer_id_exists'),
+            'products.min' => __('keywords.products_min'),
         ];
     }
 }

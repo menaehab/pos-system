@@ -161,4 +161,5 @@ return [
     'select_customer' => 'اختر العميل',
     'customer_id_required' => 'معرف العميل مطلوب',
     'customer_id_exists' => 'معرف العميل غير موجود',
+    'products_min' => 'المنتجات يجب أن تكون أكبر من 0',
 ];
