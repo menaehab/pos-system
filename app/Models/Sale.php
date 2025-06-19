@@ -34,8 +34,8 @@ class Sale extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    // public function saleItems()
-    // {
-    //     return $this->hasMany(SaleItem::class);
-    // }
+    public function saleItems()
+    {
+        return $this->hasMany(SaleItem::class);
+    }
 }
