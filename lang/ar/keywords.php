@@ -150,4 +150,5 @@ return [
     'order' => 'الطلب',
     'cancel' => 'إلغاء',
     'checkout_and_print' => 'إتمام الشراء وطباعة',
+    'barcode_unique' => 'الباركود موجود بالفعل',
 ];
