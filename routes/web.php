@@ -6,6 +6,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Products\ProductPage;
+use App\Livewire\Customers\CustomerPage;
 use App\Livewire\Purchases\PurchasePage;
 use App\Livewire\Purchases\PurchaseShow;
 use App\Livewire\Suppliers\SupplierPage;
@@ -48,4 +49,7 @@ Route::middleware('auth')->group(function () {
 
     // purchase show
     Route::get('purchases/{id}/show', PurchaseShow::class)->name('purchases.show');
+
+    // customers
+    Route::get('customers', CustomerPage::class)->name('customers');
 });
