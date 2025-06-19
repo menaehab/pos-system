@@ -15,6 +15,7 @@ class SupplierDelete extends Component
         $supplier = Supplier::where('slug', $slug)->firstOrFail();
 
         $this->slug = $supplier->slug;
+        $this->dispatch('delete-modal');
     }
     public function deleteSupplier()
     {

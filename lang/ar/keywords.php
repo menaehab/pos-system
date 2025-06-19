@@ -131,4 +131,12 @@ return [
     'purchase_details' => 'تفاصيل المشتريات',
     'delete_purchase' => 'حذف المشتريات',
     'purchase_deleted_successfully' => 'تم حذف المشتريات بنجاح',
+    'customer_added_successfully' => 'تم إضافة العميل بنجاح',
+    'customer_edited_successfully' => 'تم تعديل العميل بنجاح',
+    'customer_deleted_successfully' => 'تم حذف العميل بنجاح',
+    'phone_is_required' => 'الهاتف مطلوب',
+    'customers' => 'العملاء',
+    'add_customer' => 'إضافة عميل',
+    'edit_customer' => 'تعديل العميل',
+    'delete_customer' => 'حذف العميل',
 ];
