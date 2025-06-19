@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('total_amount')->default(0);
-            $table->unsignedBigInteger('paid_amount')->default(0);
-            $table->unsignedBigInteger('due_amount')->default(0);
+            $table->decimal('total_amount', 10, 2)->default(0);
+            $table->decimal('paid_amount', 10, 2)->default(0);
+            $table->decimal('due_amount', 10, 2)->default(0);
             $table->dateTime('purchase_date')->default(now());
             $table->text('note')->nullable();
             $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete();

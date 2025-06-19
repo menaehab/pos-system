@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name')->index();
             $table->string('slug')->unique();
             $table->string('barcode')->unique()->nullable();
-            $table->unsignedBigInteger('buy_price')->default(0);
-            $table->unsignedBigInteger('sell_price')->default(0);
+            $table->decimal('buy_price', 10, 2)->default(0);
+            $table->decimal('sell_price', 10, 2)->default(0);
             $table->bigInteger('quantity')->default(0);
             $table->unsignedBigInteger('pieces_per_carton')->default(0);
             $table->foreignId('sub_category_id')->constrained('sub_categories')->cascadeOnDelete();
