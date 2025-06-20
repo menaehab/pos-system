@@ -49,6 +49,15 @@ class HomePage extends Component
     {
         Session::put('cart', []);
     }
+
+    public function handleBarcodeScan(string $barcode): void
+    {
+        $product = Product::where('barcode', $barcode)->first();
+
+        if ($product) {
+            $this->addToCart($product->id);
+        }
+    }
     public function rules()
     {
         return (new SaleRequest())->rules();

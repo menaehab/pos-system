@@ -107,4 +107,26 @@
         </div>
     </div>
 </div>
-</div>
+<script>
+    let barcode = '';
+    let typingTimer;
+
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+        clearTimeout(typingTimer);
+
+        if (e.key === 'Enter') {
+            if (barcode.length > 3) {
+                window.Livewire.first().call('handleBarcodeScan', barcode);
+            }
+            barcode = '';
+            return;
+        }
+
+        if (/^[a-zA-Z0-9]$/.test(e.key)) {
+            barcode += e.key;
+            typingTimer = setTimeout(() => barcode = '', 300);
+        }
+    });
+</script>
