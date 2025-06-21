@@ -1,6 +1,5 @@
 <?php
 
-use Livewire\Volt\Volt;
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
@@ -13,6 +12,7 @@ use App\Livewire\Suppliers\SupplierPage;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\Purchases\PurchaseCreate;
 use App\Livewire\Purchases\PurchaseUpdate;
+use App\Http\Controllers\InvoiceController;
 use App\Livewire\SubCategories\SubCategoryPage;
 
 // login
@@ -52,4 +52,7 @@ Route::middleware('auth')->group(function () {
 
     // customers
     Route::get('customers', CustomerPage::class)->name('customers');
+
+    // invoice
+    Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice.print');
 });

@@ -162,4 +162,11 @@ return [
     'customer_id_required' => 'معرف العميل مطلوب',
     'customer_id_exists' => 'معرف العميل غير موجود',
     'products_min' => 'المنتجات يجب أن تكون أكبر من 0',
+    'print_invoice' => 'طباعة الفاتورة',
+    'invoice' => 'فاتورة بيع',
+    'invoice_printed_successfully' => 'تم طباعة الفاتورة بنجاح',
+    'invoice_number' => 'رقم الفاتورة',
+    'thanks' => 'شكراً لتعاملكم معنا',
+    'print_fee' => 'رسوم الطباعة',
+    'final_total' => 'الإجمالي النهائي',
 ];

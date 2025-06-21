@@ -66,7 +66,7 @@ class HomePage extends Component
     {
         return (new SaleRequest())->messages();
     }
-    public function checkout()
+    public function checkout($print = false)
     {
         $cart = Session::get('cart', []);
         if (empty($cart)) {
@@ -112,6 +112,10 @@ class HomePage extends Component
         Session::put('cart', []);
 
         $this->customer_id = null;
+
+        if($print) {
+            return redirect()->route('invoice.print', $sale->id);
+        }
     }
     public function render()
     {
