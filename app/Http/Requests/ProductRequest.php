@@ -24,7 +24,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'sub_category_id' => 'required|exists:sub_categories,id',
-            'barcode' => 'nullable|string|max:255',
+            'barcode' => 'nullable|unique:products,barcode|string|max:255',
             'buy_price' => 'required|numeric',
             'sell_price' => 'required|numeric',
             'quantity' => 'required|numeric',
@@ -37,7 +37,7 @@ class ProductRequest extends FormRequest
         return [
             'name.required' => __('keywords.name_required'),
             'sub_category_id.required' => __('keywords.sub_category_required'),
-            'barcode.required' => __('keywords.barcode_required'),
+            'barcode.unique' => __('keywords.barcode_unique'),
             'buy_price.required' => __('keywords.buy_price_required'),
             'sell_price.required' => __('keywords.sell_price_required'),
             'quantity.required' => __('keywords.quantity_required'),

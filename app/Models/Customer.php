@@ -23,4 +23,8 @@ class Customer extends Model
         return 'slug';
     }
 
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 }

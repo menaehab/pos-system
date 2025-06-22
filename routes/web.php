@@ -1,9 +1,10 @@
 <?php
 
-use Livewire\Volt\Volt;
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
+use App\Livewire\Sales\SalePage;
+use App\Livewire\Sales\SaleShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Products\ProductPage;
 use App\Livewire\Customers\CustomerPage;
@@ -13,6 +14,7 @@ use App\Livewire\Suppliers\SupplierPage;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\Purchases\PurchaseCreate;
 use App\Livewire\Purchases\PurchaseUpdate;
+use App\Http\Controllers\InvoiceController;
 use App\Livewire\SubCategories\SubCategoryPage;
 
 // login
@@ -52,4 +54,13 @@ Route::middleware('auth')->group(function () {
 
     // customers
     Route::get('customers', CustomerPage::class)->name('customers');
+
+    // invoice
+    Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice.print');
+
+    // sales
+    Route::get('sales', SalePage::class)->name('sales');
+
+    // sale show
+    Route::get('sales/{invoice_number}/show', SaleShow::class)->name('sales.show');
 });

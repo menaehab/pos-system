@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('purchase_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('quantity')->default(0);
-            $table->unsignedBigInteger('price')->default(0);
+            $table->decimal('price', 10, 2)->default(0);
             $table->boolean('cartoon_quantity')->default(false);
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignUuid('purchase_id')->constrained('purchases')->cascadeOnDelete();
