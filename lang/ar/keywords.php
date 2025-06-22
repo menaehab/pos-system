@@ -169,4 +169,12 @@ return [
     'thanks' => 'شكراً لتعاملكم معنا',
     'print_fee' => 'رسوم الطباعة',
     'final_total' => 'الإجمالي النهائي',
+    'invoices' => 'الفواتير',
+    'total_price' => 'الإجمالي',
+    'sale_date' => 'تاريخ الفاتورة',
+    'customer' => 'العميل',
+    'delete_sale' => 'حذف الفاتورة',
+    'sale_deleted_successfully' => 'تم حذف الفاتورة بنجاح',
+    'sale' => 'فاتورة بيع',
+    'back' => 'العودة'
 ];

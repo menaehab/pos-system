@@ -2,14 +2,14 @@
     <!-- Main Content -->
     <div class="flex flex-col md:flex-row flex-1">
         <!-- Left Section -->
-        <div class="w-full flex flex-col bg-white border-b md:border-b-0 md:border-r overflow-hidden"
+        <div class="w-full flex flex-col bg-gray-100 border-b md:border-b-0 md:border-r overflow-hidden"
             style="margin-left: 320px;">
             <div class="p-4 md:p-6 overflow-y-auto flex-1">
                 <h1 class="text-2xl font-semibold mb-4 text-center">{{ __('keywords.search_products') }}</h1>
                 <div class="mb-6">
                     <input type="text" wire:model.live.debounce.200ms="search"
                         placeholder="{{ __('keywords.search_placeholder') }}"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="w-full bg-white px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 @if ($errors->any())
                     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
@@ -38,7 +38,7 @@
                         @if ($allProducts->count() > 0)
                             @foreach ($allProducts as $product)
                                 <button wire:click="addToCart({{ $product->id }})"
-                                    class="cursor-pointer p-4 rounded-lg hover:shadow border-2 active:scale-95 transition">
+                                    class="cursor-pointer bg-white p-4 rounded-lg hover:shadow border-2 active:scale-95 transition">
                                     <h2 class="font-medium text-gray-800 text-sm truncate">{{ $product->name }}</h2>
                                     <p class="font-semibold">{{ __('keywords.product_price') }} <span
                                             class="text-gray-500 text-sm">{{ $product->sell_price }}
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <!-- Pagination -->
-            <div class="p-4 border-t bg-white">
+            <div class="p-4 border-t bg-gray-100">
                 {{ $allProducts->links() }}
             </div>
         </div>

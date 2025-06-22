@@ -3,6 +3,8 @@
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
+use App\Livewire\Sales\SalePage;
+use App\Livewire\Sales\SaleShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Products\ProductPage;
 use App\Livewire\Customers\CustomerPage;
@@ -55,4 +57,10 @@ Route::middleware('auth')->group(function () {
 
     // invoice
     Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice.print');
+
+    // sales
+    Route::get('sales', SalePage::class)->name('sales');
+
+    // sale show
+    Route::get('sales/{invoice_number}/show', SaleShow::class)->name('sales.show');
 });
