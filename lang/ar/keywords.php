@@ -176,5 +176,6 @@ return [
     'delete_sale' => 'حذف الفاتورة',
     'sale_deleted_successfully' => 'تم حذف الفاتورة بنجاح',
     'sale' => 'فاتورة بيع',
-    'back' => 'العودة'
+    'back' => 'العودة',
+    'remove' => 'إزالة'
 ];

@@ -70,17 +70,24 @@
                 @if (count($cart) > 0)
                     @foreach ($cart as $item)
                         <div class="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm">
-                            <div>
+                            <div class="flex-1">
                                 <h2 class="font-medium text-gray-800">{{ $item['name'] }}</h2>
-                                <p class="text-gray-500 text-sm">{{ __('keywords.quantity') }} <span
-                                        class="text-gray-500 text-sm">{{ $item['quantity'] }}</span>
-                                </p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-gray-500 text-sm mr-2">{{ __('keywords.quantity') }}:</span>
+                                    <input type="number" wire:model.live.debounce.300ms="quantity.{{ $item['id'] }}"
+                                        wire:change="updateQuantity({{ $item['id'] }}, $event.target.value)"
+                                        min="1" class="w-12 px-1 py-0.5 text-sm border rounded text-center"
+                                        value="{{ $item['quantity'] }}">
+                                </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="font-semibold">{{ $item['price'] }} ج</span>
+                                <span
+                                    class="font-semibold whitespace-nowrap">{{ number_format($item['price'] * $item['quantity'], 2) }}
+                                    ج</span>
                                 <button wire:click="removeFromCart({{ $item['id'] }})"
-                                    class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"><i
-                                        class="fa-solid fa-trash"></i></button>
+                                    class="p-2 text-red-500 hover:text-red-700" title="{{ __('keywords.remove') }}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </div>
                         </div>
                     @endforeach

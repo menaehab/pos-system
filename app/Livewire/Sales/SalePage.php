@@ -26,6 +26,7 @@ class SalePage extends Component
             ->orWhereHas('customer', function ($query) {
                 $query->where('name', 'like', "%{$this->search}%");
             })
+            ->latest()
             ->paginate(10);
 
         return view('livewire.sales.sale-page', compact('sales'))->layout('pages.layout', [

@@ -16,6 +16,16 @@ class HomePage extends Component
     public $search = '';
     public $customer_id;
     public $products;
+    public $quantity = [];
+
+    public function hydrate()
+    {
+        $cart = Session::get('cart', []);
+        foreach ($cart as $id => $item) {
+            $this->quantity[$id] = $item['quantity'];
+        }
+    }
+
     public function updatedSearch()
     {
         $this->resetPage();
@@ -28,6 +38,7 @@ class HomePage extends Component
 
         if (isset($cart[$product->id])) {
             $cart[$product->id]['quantity'] += 1;
+            $this->quantity[$product->id] = $cart[$product->id]['quantity'];
         } else {
             $cart[$product->id] = [
                 'id' => $product->id,
@@ -35,6 +46,7 @@ class HomePage extends Component
                 'price' => $product->sell_price,
                 'quantity' => 1,
             ];
+            $this->quantity[$product->id] = 1;
         }
 
         Session::put('cart', $cart);
@@ -44,6 +56,20 @@ class HomePage extends Component
         $cart = Session::get('cart', []);
         unset($cart[$productId]);
         Session::put('cart', $cart);
+    }
+
+    public function updateQuantity($productId, $quantity)
+    {
+        $cart = Session::get('cart', []);
+
+        if (isset($cart[$productId])) {
+            $quantity = max(1, intval($quantity));
+            $cart[$productId]['quantity'] = $quantity;
+            Session::put('cart', $cart);
+            $this->quantity[$productId] = $quantity;
+        }
+
+        $this->dispatch('cartUpdated');
     }
     public function clearCart()
     {
