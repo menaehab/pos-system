@@ -8,6 +8,7 @@ use App\Livewire\Sales\SaleShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Products\ProductPage;
 use App\Livewire\Customers\CustomerPage;
+use App\Livewire\Customers\CustomerShow;
 use App\Livewire\Purchases\PurchasePage;
 use App\Livewire\Purchases\PurchaseShow;
 use App\Livewire\Suppliers\SupplierPage;
@@ -57,6 +58,9 @@ Route::middleware('auth')->group(function () {
 
     // customers
     Route::get('customers', CustomerPage::class)->name('customers');
+
+    // customer show
+    Route::get('customers/{slug}/show', CustomerShow::class)->name('customers.show');
 
     // invoice
     Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice.print');

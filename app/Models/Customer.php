@@ -30,4 +30,9 @@ class Customer extends Model
     {
         return $this->hasMany(Sale::class);
     }
+
+    public function ledgers()
+    {
+        return $this->hasMany(CustomerLedger::class);
+    }
 }

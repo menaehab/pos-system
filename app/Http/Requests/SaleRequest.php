@@ -26,6 +26,8 @@ class SaleRequest extends FormRequest
             'products.*.id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|numeric|min:1',
             'customer_id' => 'nullable|exists:customers,id',
+            'note' => 'nullable|string',
+            'amount' => 'nullable|numeric|min:0',
         ];
     }
     public function messages(): array
@@ -39,6 +41,8 @@ class SaleRequest extends FormRequest
             'products.*.quantity.min' => __('keywords.quantity_min'),
             'customer_id.exists' => __('keywords.customer_id_exists'),
             'products.min' => __('keywords.products_min'),
+            'amount.numeric' => __('keywords.amount_numeric'),
+            'amount.min' => __('keywords.amount_min'),
         ];
     }
 }

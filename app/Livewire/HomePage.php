@@ -7,6 +7,7 @@ use App\Models\Product;
 use Livewire\Component;
 use App\Models\Customer;
 use Livewire\WithPagination;
+use App\Models\CustomerLedger;
 use App\Http\Requests\SaleRequest;
 use Illuminate\Support\Facades\Session;
 
@@ -17,6 +18,9 @@ class HomePage extends Component
     public $customer_id;
     public $products;
     public $quantity = [];
+    public $showLedger = false;
+    public $amount;
+    public $note;
 
     public function hydrate()
     {
@@ -70,6 +74,20 @@ class HomePage extends Component
         }
 
         $this->dispatch('cartUpdated');
+    }
+    public function updatedCustomerId($value)
+    {
+        \Log::info('Customer ID updated to: ' . $value);
+        if($value) {
+            $this->showLedger = true;
+            \Log::info('Showing ledger for customer: ' . $value);
+        } else {
+            $this->showLedger = false;
+            $this->amount = null;
+            $this->note = null;
+            \Log::info('Hiding ledger, no customer selected');
+        }
+        $this->dispatch('customerUpdated');
     }
     public function clearCart()
     {
@@ -134,6 +152,15 @@ class HomePage extends Component
         $sale->update([
             'total_price' => $total,
         ]);
+
+        if($this->customer_id) {
+            CustomerLedger::create([
+                'amount' => $this->amount,
+                'note' => $this->note,
+                'customer_id' => $this->customer_id,
+                'sale_id' => $sale->id,
+            ]);
+        }
 
         Session::put('cart', []);
 
