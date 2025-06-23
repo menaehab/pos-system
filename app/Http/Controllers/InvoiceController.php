@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sale;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Carbon\Carbon;
 require_once(base_path('I18N/Arabic.php'));
 
 class InvoiceController extends Controller

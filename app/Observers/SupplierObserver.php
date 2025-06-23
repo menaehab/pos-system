@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Supplier;
+use Carbon\Carbon;
 
 class SupplierObserver
 {
@@ -13,7 +14,11 @@ class SupplierObserver
     {
         activity()->causedBy(auth()->user())
         ->performedOn($supplier)
-        ->withProperties($supplier->toArray())
+        ->withProperties([
+            'name' => $supplier->name,
+            'phone' => $supplier->phone,
+            'created_at' => Carbon::parse($supplier->created_at)->format('Y-m-d H:i:s A'),
+        ])
         ->log(__('keywords.supplier_created'));
     }
 
@@ -24,7 +29,11 @@ class SupplierObserver
     {
         activity()->causedBy(auth()->user())
         ->performedOn($supplier)
-        ->withProperties($supplier->toArray())
+        ->withProperties([
+            'name' => $supplier->name,
+            'phone' => $supplier->phone,
+            'created_at' => Carbon::parse($supplier->created_at)->format('Y-m-d H:i:s A'),
+        ])
         ->log(__('keywords.supplier_updated'));
     }
 
@@ -35,7 +44,11 @@ class SupplierObserver
     {
         activity()->causedBy(auth()->user())
         ->performedOn($supplier)
-        ->withProperties($supplier->toArray())
+        ->withProperties([
+            'name' => $supplier->name,
+            'phone' => $supplier->phone,
+            'created_at' => Carbon::parse($supplier->created_at)->format('Y-m-d H:i:s A'),
+        ])
         ->log(__('keywords.supplier_deleted'));
     }
 
@@ -46,7 +59,11 @@ class SupplierObserver
     {
         activity()->causedBy(auth()->user())
         ->performedOn($supplier)
-        ->withProperties($supplier->toArray())
+        ->withProperties([
+            'name' => $supplier->name,
+            'phone' => $supplier->phone,
+            'created_at' => Carbon::parse($supplier->created_at)->format('Y-m-d H:i:s A'),
+        ])
         ->log(__('keywords.supplier_restored'));
     }
 
@@ -57,7 +74,11 @@ class SupplierObserver
     {
         activity()->causedBy(auth()->user())
         ->performedOn($supplier)
-        ->withProperties($supplier->toArray())
+        ->withProperties([
+            'name' => $supplier->name,
+            'phone' => $supplier->phone,
+            'created_at' => Carbon::parse($supplier->created_at)->format('Y-m-d H:i:s A'),
+        ])
         ->log(__('keywords.supplier_force_deleted'));
     }
 }

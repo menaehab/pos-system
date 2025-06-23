@@ -1,5 +1,5 @@
 <div class="container mx-auto p-6">
-    <h1 class="text-5xl font-bold text-center my-6">{{ __('keywords.customers') }}</h1>
+    <h1 class="text-5xl font-bold text-center my-6">{{ __('keywords.activity_logs') }}</h1>
 
     <x-success-alert />
 

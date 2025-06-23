@@ -16,7 +16,6 @@ class ActivityLogShow extends Component
 
     public function render()
     {
-        $filteredProperties = collect($this->activity->properties)->except(['id', 'slug', 'updated_at']);
-        return view('livewire.activity-logs.activity-log-show', compact('filteredProperties'))->layout('pages.layout', ['title' => __('keywords.activity_logs')]);
+        return view('livewire.activity-logs.activity-log-show')->layout('pages.layout', ['title' => __('keywords.activity_logs')]);
     }
 }

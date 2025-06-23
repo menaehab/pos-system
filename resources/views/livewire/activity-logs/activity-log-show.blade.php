@@ -82,51 +82,40 @@
             <!-- Properties -->
             <div class="bg-white dark:bg-gray-700 shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6 bg-gray-50 dark:bg-gray-800">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white mb-4">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-white">
                         {{ __('keywords.properties') }}
                     </h3>
                 </div>
-                <div class="border-t border-gray-200 dark:border-gray-600">
-                    <div class="bg-white dark:bg-gray-700 overflow-hidden">
-                        <div class="overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                                <thead class="bg-gray-50 dark:bg-gray-800">
+                <div class="bg-white dark:bg-gray-700 overflow-hidden">
+                    <div class="overflow-hidden border border-gray-200 dark:border-gray-700 rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+                            <thead class="bg-gray-50 dark:bg-gray-800">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        {{ __('keywords.property') }}
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        {{ __('keywords.value') }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-600">
+                                @foreach ($activity->properties as $key => $value)
                                     <tr>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                            {{ __('keywords.property') }}
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                            {{ __('keywords.value') }}
-                                        </th>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                                            {{ __('keywords.' . $key) }}
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                            {{ $value }}
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-600">
-                                    @foreach ($filteredProperties as $key => $value)
-                                        <tr>
-                                            <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                                {{ __('keywords.' . $key) }}
-                                            </td>
-                                            <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
-                                                @php
-                                                    try {
-                                                        $parsed = \Carbon\Carbon::parse($value)->format(
-                                                            'Y-m-d H:i:s A',
-                                                        );
-                                                    } catch (\Exception $e) {
-                                                        $parsed = $value;
-                                                    }
-                                                @endphp
-                                                {{ $parsed }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

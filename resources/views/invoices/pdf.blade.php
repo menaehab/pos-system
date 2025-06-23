@@ -46,9 +46,9 @@
 
     <div class="line"></div>
 
-    <p>ج.م {{ number_format($sale->total_price, 2) }} :{{ $thisText('الإجمالي') }}</p>
-    <p>ج.م {{ number_format($printFee, 2) }} :{{ $thisText('رسوم الطباعة') }}</p>
-    <p><strong>ج.م {{ number_format($finalTotal, 2) }} :{{ $thisText('الإجمالي النهائي') }}</strong></p>
+    <p>م.ج {{ number_format($sale->total_price, 2) }} :{{ $thisText('الإجمالي') }}</p>
+    <p>م.ج {{ number_format($printFee, 2) }} :{{ $thisText('رسوم الطباعة') }}</p>
+    <p><strong>م.ج {{ number_format($finalTotal, 2) }} :{{ $thisText('الإجمالي النهائي') }}</strong></p>
 
     <div class="line"></div>
 
