@@ -3,8 +3,9 @@
         <!-- Invoice Header -->
         <div class="flex justify-between items-start mb-8">
             <div class="text-right">
-                <h1 class="text-2xl font-bold text-gray-800">{{ __('keywords.invoice') }}</h1>
-                <p class="text-gray-600">{{ __('keywords.invoice_number') }}: {{ $sale->invoice_number }}</p>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">{{ __('keywords.invoice') }}</h1>
+                <p class="text-gray-600 mb-2">{{ __('keywords.invoice_number') }}: {{ $sale->invoice_number }}</p>
+                <p class="text-gray-600 mb-2">{{ __('keywords.casher') }}: {{ $sale->user->name }}</p>
             </div>
             <div class="text-left">
                 <p class="text-gray-600">

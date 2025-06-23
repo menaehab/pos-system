@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->default(0);
             $table->boolean('cartoon_quantity')->default(false);
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
-            $table->foreignUuid('purchase_id')->constrained('purchases')->cascadeOnDelete();
+            $table->foreignId('purchase_id')->constrained('purchases')->cascadeOnDelete();
             $table->timestamps();
         });
     }

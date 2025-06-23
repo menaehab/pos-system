@@ -2,21 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use App\Observers\PurchaseObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy(PurchaseObserver::class)]
 class Purchase extends Model
 {
     protected $guarded = ['id'];
-    public $incrementing = false;
-
-    public static function boot() {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->id = Str::uuid();
-        });
-    }
 
     public function items() {
         return $this->hasMany(PurchaseItem::class);
