@@ -12,7 +12,6 @@ use App\Livewire\Customers\CustomerShow;
 use App\Livewire\Purchases\PurchasePage;
 use App\Livewire\Purchases\PurchaseShow;
 use App\Livewire\Suppliers\SupplierPage;
-use App\Livewire\Activities\ActivityPage;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\Purchases\PurchaseCreate;
 use App\Livewire\Purchases\PurchaseUpdate;
@@ -20,6 +19,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Livewire\ActivityLogs\ActivityLogPage;
 use App\Livewire\ActivityLogs\ActivityLogShow;
 use App\Livewire\SubCategories\SubCategoryPage;
+use App\Livewire\InstallmentPayments\InstallmentPaymentPage;
 
 // login
 Route::get('login', Login::class)->name('login');
@@ -61,6 +61,9 @@ Route::middleware('auth')->group(function () {
 
     // customer show
     Route::get('customers/{slug}/show', CustomerShow::class)->name('customers.show');
+
+    // installment payments
+    Route::get('installment-payments', InstallmentPaymentPage::class)->name('installment-payments');
 
     // invoice
     Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice.print');

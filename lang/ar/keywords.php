@@ -236,4 +236,8 @@ return [
     'processed_by' => 'الموظف',
     'total_paid' => 'المبلغ المدفوع',
     'remaining' => 'المتبقي',
+    'installment_payments' => 'دفع الاقساط',
+    'installment_payment_added_successfully' => 'تم إضافة دفعة القسط بنجاح',
+    'notes' => 'ملاحظات',
+    'add_installment_payment' => 'إضافة دفعة القسط'
 ];
