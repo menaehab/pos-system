@@ -95,6 +95,14 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">{{ __('keywords.invoices') }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('activity-logs') }}" wire:navigate
+                        class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
+                        <i
+                            class="fa-solid fa-copy shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-700"></i>
+                        <span class="flex-1 ms-3 whitespace-nowrap">{{ __('keywords.activity_logs') }}</span>
+                    </a>
+                </li>
             </ul>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

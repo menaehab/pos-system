@@ -11,10 +11,13 @@ use App\Livewire\Customers\CustomerPage;
 use App\Livewire\Purchases\PurchasePage;
 use App\Livewire\Purchases\PurchaseShow;
 use App\Livewire\Suppliers\SupplierPage;
+use App\Livewire\Activities\ActivityPage;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\Purchases\PurchaseCreate;
 use App\Livewire\Purchases\PurchaseUpdate;
 use App\Http\Controllers\InvoiceController;
+use App\Livewire\ActivityLogs\ActivityLogPage;
+use App\Livewire\ActivityLogs\ActivityLogShow;
 use App\Livewire\SubCategories\SubCategoryPage;
 
 // login
@@ -63,4 +66,10 @@ Route::middleware('auth')->group(function () {
 
     // sale show
     Route::get('sales/{invoice_number}/show', SaleShow::class)->name('sales.show');
+
+    // activity logs
+    Route::get('activity-logs', ActivityLogPage::class)->name('activity-logs');
+
+    // activity log show
+    Route::get('activity-logs/{id}/show', ActivityLogShow::class)->name('activity-logs.show');
 });
