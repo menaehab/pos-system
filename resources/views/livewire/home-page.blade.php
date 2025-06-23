@@ -101,13 +101,21 @@
                     <span class="text-xl font-semibold">{{ $total }} ج</span>
                 </div>
                 <div class="mb-4">
-                    <select wire:model="customer_id"
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select wire:model.live="customer_id"
+                        class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        wire:change="$refresh">
                         <option value="">{{ __('keywords.select_customer') }}</option>
                         @foreach ($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                         @endforeach
                     </select>
+                    @if ($showLedger)
+                        <input
+                            class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            type="integer" wire:model.live.lazy='amount' placeholder="{{ __('keywords.amount') }}">
+                        <textarea class="w-full px-4 mb-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            wire:model.live.lazy='note' placeholder="{{ __('keywords.note') }}"></textarea>
+                    @endif
                 </div>
                 <div class="flex flex-col sm:flex-row justify-center sm:space-x-4 space-y-2 sm:space-y-0">
                     <button wire:click="checkout()"

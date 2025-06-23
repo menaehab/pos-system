@@ -38,4 +38,9 @@ class Sale extends Model
     {
         return $this->hasMany(SaleItem::class);
     }
+
+    public function customerLedger()
+    {
+        return $this->hasMany(CustomerLedger::class);
+    }
 }
