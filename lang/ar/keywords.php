@@ -7,7 +7,7 @@ return [
     'email' => 'البريد الالكتروني',
     'password' => 'كلمة المرور',
     'home_page' => 'الصفحة الرئيسية',
-    'users' => 'المستخدمين',
+    'users' => 'الموظفين',
     'products' => 'المنتجات',
     'sales' => 'المبيعات',
     'reports' => 'التقارير',
@@ -239,5 +239,8 @@ return [
     'installment_payments' => 'دفع الاقساط',
     'installment_payment_added_successfully' => 'تم إضافة دفعة القسط بنجاح',
     'notes' => 'ملاحظات',
-    'add_installment_payment' => 'إضافة دفعة القسط'
+    'add_installment_payment' => 'إضافة دفعة قسط',
+    'add_user' => 'إضافة مستخدم',
+    'add_role' => 'إضافة دور',
+    'roles' => 'الأدوار',
 ];
