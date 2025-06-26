@@ -11,7 +11,7 @@
                 <x-table-cell :value="$key + $subCategories->firstItem()" />
                 <x-table-cell :value="$subCategory->name ?? __('keywords.not_available')" />
                 <x-table-cell :value="$subCategory->category->name ?? __('keywords.not_available')" />
-                <x-table-actions :slug="$subCategory->slug" :show="false" />
+                <x-table-actions type="slug" :slug="$subCategory->slug" :show="false" />
             </tr>
         @endforeach
     </x-table>

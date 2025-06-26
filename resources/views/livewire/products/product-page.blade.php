@@ -11,7 +11,7 @@
                 <x-table-cell :value="$product->name ?? __('keywords.not_available')" />
                 <x-table-cell :value="$product->subCategory->name ?? __('keywords.not_available')" />
                 <x-table-cell :value="$product->barcode ?? __('keywords.not_available')" />
-                <x-table-actions :slug="$product->slug" :show="true" />
+                <x-table-actions type="slug" :slug="$product->slug" :show="true" />
             </tr>
         @endforeach
     </x-table>

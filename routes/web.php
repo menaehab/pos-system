@@ -6,6 +6,7 @@ use App\Livewire\Actions\Logout;
 use App\Livewire\Roles\RolePage;
 use App\Livewire\Sales\SalePage;
 use App\Livewire\Sales\SaleShow;
+use App\Livewire\Users\UserPage;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Products\ProductPage;
 use App\Livewire\Customers\CustomerPage;
@@ -110,7 +111,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('can:manage_users_roles')->group(function () {
 
         // users
-        // Route::get('users', UserPage::class)->name('users');
+        Route::get('users', UserPage::class)->name('users');
 
         // roles
         Route::get('roles', RolePage::class)->name('roles');
