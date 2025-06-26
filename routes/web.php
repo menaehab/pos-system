@@ -3,6 +3,7 @@
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
+use App\Livewire\Roles\RolePage;
 use App\Livewire\Sales\SalePage;
 use App\Livewire\Sales\SaleShow;
 use Illuminate\Support\Facades\Route;
@@ -32,51 +33,87 @@ Route::middleware('auth')->group(function () {
     // home
     Route::get('/', HomePage::class)->name('home');
 
-    // categories
-    Route::get('categories', CategoryPage::class)->name('categories');
+    // manage items
+    Route::middleware('can:manage_items')->group(function () {
 
-    // suppliers
-    Route::get('suppliers', SupplierPage::class)->name('suppliers');
+        // categories
+        Route::get('categories', CategoryPage::class)->name('categories');
 
-    // sub categories
-    Route::get('sub-categories', SubCategoryPage::class)->name('sub-categories');
+        // suppliers
+        Route::get('suppliers', SupplierPage::class)->name('suppliers');
 
-    // products
-    Route::get('products', ProductPage::class)->name('products');
+        // sub categories
+        Route::get('sub-categories', SubCategoryPage::class)->name('sub-categories');
 
-    // purchases
-    Route::get('purchases', PurchasePage::class)->name('purchases');
+        // products
+        Route::get('products', ProductPage::class)->name('products');
 
-    // purchase create
-    Route::get('purchases/create', PurchaseCreate::class)->name('purchases.create');
+    });
 
-    // purchase edit
-    Route::get('purchases/{id}/edit', PurchaseUpdate::class)->name('purchases.edit');
+    // manage purchases
+    Route::middleware('can:manage_purchases')->group(function () {
 
-    // purchase show
-    Route::get('purchases/{id}/show', PurchaseShow::class)->name('purchases.show');
+        // purchases
+        Route::get('purchases', PurchasePage::class)->name('purchases');
 
-    // customers
-    Route::get('customers', CustomerPage::class)->name('customers');
+        // purchase create
+        Route::get('purchases/create', PurchaseCreate::class)->name('purchases.create');
 
-    // customer show
-    Route::get('customers/{slug}/show', CustomerShow::class)->name('customers.show');
+        // purchase edit
+        Route::get('purchases/{id}/edit', PurchaseUpdate::class)->name('purchases.edit');
+
+        // purchase show
+        Route::get('purchases/{id}/show', PurchaseShow::class)->name('purchases.show');
+
+    });
+
+    // manage customers
+    Route::middleware('can:manage_customers')->group(function () {
+
+        // customers
+        Route::get('customers', CustomerPage::class)->name('customers');
+
+        // customer show
+        Route::get('customers/{slug}/show', CustomerShow::class)->name('customers.show');
+
+    });
 
     // installment payments
-    Route::get('installment-payments', InstallmentPaymentPage::class)->name('installment-payments');
+    Route::middleware('can:pay_installments')->get('installment-payments', InstallmentPaymentPage::class)->name('installment-payments');
 
     // invoice
     Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice.print');
 
-    // sales
-    Route::get('sales', SalePage::class)->name('sales');
+    // manage sales
+    Route::middleware('can:manage_sales')->group(function () {
 
-    // sale show
-    Route::get('sales/{invoice_number}/show', SaleShow::class)->name('sales.show');
+        // sales
+        Route::get('sales', SalePage::class)->name('sales');
+
+        // sale show
+        Route::get('sales/{invoice_number}/show', SaleShow::class)->name('sales.show');
+
+    });
 
     // activity logs
-    Route::get('activity-logs', ActivityLogPage::class)->name('activity-logs');
+    Route::middleware('can:view_activity_logs')->group(function () {
 
-    // activity log show
-    Route::get('activity-logs/{id}/show', ActivityLogShow::class)->name('activity-logs.show');
+        // activity logs
+        Route::get('activity-logs', ActivityLogPage::class)->name('activity-logs');
+
+        // activity log show
+        Route::get('activity-logs/{id}/show', ActivityLogShow::class)->name('activity-logs.show');
+
+    });
+
+    // manage users and roles
+    Route::middleware('can:manage_users_roles')->group(function () {
+
+        // users
+        // Route::get('users', UserPage::class)->name('users');
+
+        // roles
+        Route::get('roles', RolePage::class)->name('roles');
+    });
+
 });

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Observers\RoleObserver;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Role::observe(RoleObserver::class);
     }
 }
