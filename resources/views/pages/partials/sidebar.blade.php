@@ -15,7 +15,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 border-l border-gray-200 shadow-sm">
             <h3 class="text-2xl font-bold my-3">{{ __('keywords.system_name') }}</h3>
-            <ul class="space-y-2 font-medium flex flex-col h-[calc(100%-7rem)]">
+            <ul class="overflow-y-auto space-y-2 font-medium flex flex-col h-[calc(100%-7rem)]">
                 <li>
                     <a href="{{ route('home') }}" wire:navigate
                         class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
@@ -119,7 +119,7 @@
                 @endcan
                 @can('manage_users_roles')
                     <li>
-                        <a href="#" wire:navigate
+                        <a href="{{ route('users') }}" wire:navigate
                             class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
                             <i
                                 class="fas fa-user-plus shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-700"></i>
