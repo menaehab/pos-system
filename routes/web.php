@@ -3,6 +3,7 @@
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
+use App\Livewire\Roles\RolePage;
 use App\Livewire\Sales\SalePage;
 use App\Livewire\Sales\SaleShow;
 use Illuminate\Support\Facades\Route;
@@ -105,15 +106,14 @@ Route::middleware('auth')->group(function () {
 
     });
 
-    // // manage users and roles
-    // Route::middleware('can:manage_users_roles')->group(function () {
+    // manage users and roles
+    Route::middleware('can:manage_users_roles')->group(function () {
 
-    //     // users
-    //     Route::get('users', UserPage::class)->name('users');
+        // users
+        // Route::get('users', UserPage::class)->name('users');
 
-    //     // user show
-    //     Route::get('users/{id}/show', UserShow::class)->name('users.show');
-
-    // });
+        // roles
+        Route::get('roles', RolePage::class)->name('roles');
+    });
 
 });

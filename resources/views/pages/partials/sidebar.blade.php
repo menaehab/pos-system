@@ -126,10 +126,8 @@
                             <span class="flex-1 ms-3 whitespace-nowrap">{{ __('keywords.users') }}</span>
                         </a>
                     </li>
-                @endcan
-                @can('manage_roles')
                     <li>
-                        <a href="#" wire:navigate
+                        <a href="{{ route('roles') }}" wire:navigate
                             class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
                             <i
                                 class="fas fa-user-tag shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-700"></i>
