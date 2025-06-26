@@ -257,4 +257,9 @@ return [
     'delete_role' => 'حذف الدور',
     'edit_role' => 'تعديل الدور',
     'show_role' => 'عرض الدور',
+    'role_created' => 'تم إضافة دور جديد',
+    'role_updated' => 'تم تعديل دور',
+    'role_deleted' => 'تم حذف دور',
+    'role_restored' => 'تم استعادة دور',
+    'role_force_deleted' => 'تم حذف دور نهائي',
 ];
