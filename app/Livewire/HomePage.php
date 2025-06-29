@@ -9,6 +9,7 @@ use App\Models\Customer;
 use Livewire\WithPagination;
 use App\Models\CustomerLedger;
 use App\Http\Requests\SaleRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class HomePage extends Component
@@ -143,7 +144,7 @@ class HomePage extends Component
                 'quantity' => $item['quantity'],
                 'price' => $product->sell_price,
             ]);
-            $product->update([
+            DB::table('products')->where('id', $product->id)->update([
                 'quantity' => $product->quantity - $item['quantity'],
             ]);
             $total += $product->sell_price * $item['quantity'];
