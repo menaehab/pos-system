@@ -24,6 +24,14 @@
                         <span class="ms-3">{{ __('keywords.home_page') }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('calculator') }}" wire:navigate
+                        class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
+                        <i
+                            class="fa-solid fa-calculator shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-700"></i>
+                        <span class="flex-1 ms-3 whitespace-nowrap">{{ __('keywords.calculator') }}</span>
+                    </a>
+                </li>
                 @can('manage_items')
                     <li>
                         <a href="{{ route('suppliers') }}" wire:navigate
