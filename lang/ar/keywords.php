@@ -296,4 +296,5 @@ return [
     'delete_user_force_deleted' => 'تم حذف المستخدم نهائي',
     'edit_user' => 'تعديل المستخدم',
     'update_user' => 'تعديل المستخدم',
+    'calculator' => 'الآلة الحاسبية',
 ];

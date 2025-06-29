@@ -3,6 +3,7 @@
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
 use App\Livewire\Actions\Logout;
+use App\Livewire\CalculatorPage;
 use App\Livewire\Roles\RolePage;
 use App\Livewire\Sales\SalePage;
 use App\Livewire\Sales\SaleShow;
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
     // home
     Route::get('/', HomePage::class)->name('home');
+
+    // calculator
+    Route::get('calculator', CalculatorPage::class)->name('calculator');
 
     // manage items
     Route::middleware('can:manage_items')->group(function () {
