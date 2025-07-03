@@ -21,6 +21,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'view_activity_logs', 'display_name' => 'عرض سجل الأنشطة'],
             ['name' => 'manage_users_roles', 'display_name' => 'إدارة المستخدمين والصلاحيات'],
             ['name' => 'manage_sales', 'display_name' => 'إدارة المبيعات'],
+            ['name' => 'view_analytics', 'display_name' => 'عرض تحليلات'],
         ];
         foreach ($permissions as $permission) {
             Permission::updateOrCreate([

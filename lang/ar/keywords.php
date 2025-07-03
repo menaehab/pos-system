@@ -297,4 +297,10 @@ return [
     'edit_user' => 'تعديل المستخدم',
     'update_user' => 'تعديل المستخدم',
     'calculator' => 'الآلة الحاسبية',
+    'pound' => 'ج.م',
+    'analytics' => 'التحليلات',
+    'select_month' => 'اختر الشهر',
+    'total_sales' => 'إجمالي المبيعات',
+    'total_purchases' => 'إجمالي المشتريات',
+    'total_payments' => 'إجمالي المدفوعات',
 ];

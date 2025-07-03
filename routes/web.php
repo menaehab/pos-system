@@ -2,6 +2,7 @@
 
 use App\Livewire\HomePage;
 use App\Livewire\Auth\Login;
+use App\Livewire\AnalyticsPage;
 use App\Livewire\Actions\Logout;
 use App\Livewire\CalculatorPage;
 use App\Livewire\Roles\RolePage;
@@ -120,5 +121,8 @@ Route::middleware('auth')->group(function () {
         // roles
         Route::get('roles', RolePage::class)->name('roles');
     });
+
+    // analytics
+    Route::middleware('can:view_analytics')->get('analytics', AnalyticsPage::class)->name('analytics');
 
 });
