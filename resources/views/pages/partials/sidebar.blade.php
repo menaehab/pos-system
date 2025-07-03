@@ -143,6 +143,16 @@
                         </a>
                     </li>
                 @endcan
+                @can('view_analytics')
+                    <li>
+                        <a href="{{ route('analytics') }}" wire:navigate
+                            class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-blue-100 group transition-colors duration-200">
+                            <i
+                                class="fas fa-chart-line shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-700"></i>
+                            <span class="flex-1 ms-3 whitespace-nowrap">{{ __('keywords.analytics') }}</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

@@ -2,10 +2,17 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
 {
+    public $id;
+    public function __construct($slug = null)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $this->id = $product->id;
+    }
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -24,7 +31,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'sub_category_id' => 'required|exists:sub_categories,id',
-            'barcode' => 'nullable|unique:products,barcode|string|max:255',
+            'barcode' => 'nullable|string|max:255|unique:products,barcode,' . $this->id,
             'buy_price' => 'required|numeric',
             'sell_price' => 'required|numeric',
             'quantity' => 'required|numeric',

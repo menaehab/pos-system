@@ -26,12 +26,12 @@ class ProductUpdate extends Component
     public $showSubCategories = false;
     protected function rules()
     {
-        return (new ProductRequest())->rules();
+        return (new ProductRequest($this->slug))->rules();
     }
 
     protected function messages()
     {
-        return (new ProductRequest())->messages();
+        return (new ProductRequest($this->slug))->messages();
     }
 
     public function updated($propertyName)

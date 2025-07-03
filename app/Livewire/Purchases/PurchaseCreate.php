@@ -18,11 +18,11 @@ class PurchaseCreate extends Component
     public $note;
     public $cartoon_quantity = false;
     public $items = [
-        ['product_id' => '', 'quantity' => 0, 'price' => 0],
+        ['product_id' => '', 'quantity' => 0, 'price' => 0, 'cartoon_quantity' => false],
     ];
     public function addItem()
     {
-        $this->items[] = ['product_id' => '', 'quantity' => 0, 'price' => 0];
+        $this->items[] = ['product_id' => '', 'quantity' => 0, 'price' => 0, 'cartoon_quantity' => false];
     }
     public function removeItem($index)
     {
@@ -64,11 +64,11 @@ class PurchaseCreate extends Component
                 'product_id' => $item['product_id'],
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
-                'cartoon_quantity' => $item['cartoon_quantity'],
+                'cartoon_quantity' => $item['cartoon_quantity'] ?? false,
             ]);
 
             $product->update([
-                'quantity' => $product->quantity + $item['quantity'] * ($item['cartoon_quantity'] && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1),
+                'quantity' => $product->quantity + $item['quantity'] * (($item['cartoon_quantity'] ?? false) && $product->pieces_per_carton > 0 ? $product->pieces_per_carton : 1),
             ]);
             $product->save();
         }
