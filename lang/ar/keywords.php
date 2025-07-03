@@ -303,4 +303,5 @@ return [
     'total_sales' => 'إجمالي المبيعات',
     'total_purchases' => 'إجمالي المشتريات',
     'total_payments' => 'إجمالي المدفوعات',
+    'version' => 'الإصدار'
 ];
