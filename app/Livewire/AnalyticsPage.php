@@ -2,8 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Models\Sale;
 use Livewire\Component;
+use App\Models\Purchase;
 use Livewire\Attributes\On;
+use App\Models\CustomerLedger;
 use Illuminate\Support\Facades\DB;
 
 class AnalyticsPage extends Component
@@ -27,15 +30,15 @@ class AnalyticsPage extends Component
 
     public function calculateTotals()
     {
-        $this->salesTotal = \App\Models\Sale::whereYear('created_at', '=', date('Y', strtotime($this->selectedMonth)))
+        $this->salesTotal = Sale::whereYear('created_at', '=', date('Y', strtotime($this->selectedMonth)))
             ->whereMonth('created_at', '=', date('m', strtotime($this->selectedMonth)))
             ->sum('total_price');
 
-        $this->purchasesTotal = \App\Models\Purchase::whereYear('purchase_date', '=', date('Y', strtotime($this->selectedMonth)))
+        $this->purchasesTotal = Purchase::whereYear('purchase_date', '=', date('Y', strtotime($this->selectedMonth)))
             ->whereMonth('purchase_date', '=', date('m', strtotime($this->selectedMonth)))
             ->sum('total_amount');
 
-        $this->paymentsTotal = \App\Models\CustomerLedger::whereYear('created_at', '=', date('Y', strtotime($this->selectedMonth)))
+        $this->paymentsTotal = CustomerLedger::whereYear('created_at', '=', date('Y', strtotime($this->selectedMonth)))
             ->whereMonth('created_at', '=', date('m', strtotime($this->selectedMonth)))
             ->sum('amount');
     }
@@ -45,19 +48,19 @@ class AnalyticsPage extends Component
     {
         $year = date('Y', strtotime($this->selectedMonth));
 
-        $salesData = \App\Models\Sale::whereYear('created_at', $year)
+        $salesData = Sale::whereYear('created_at', $year)
             ->selectRaw('SUM(total_price) as total, MONTH(created_at) as month')
             ->groupBy('month')
             ->get()
             ->toArray();
 
-        $purchasesData = \App\Models\Purchase::whereYear('purchase_date', $year)
+        $purchasesData = Purchase::whereYear('purchase_date', $year)
             ->selectRaw('SUM(total_amount) as total, MONTH(purchase_date) as month')
             ->groupBy('month')
             ->get()
             ->toArray();
 
-        $paymentsData = \App\Models\CustomerLedger::whereYear('created_at', $year)
+        $paymentsData = CustomerLedger::whereYear('created_at', $year)
             ->selectRaw('SUM(amount) as total, MONTH(created_at) as month')
             ->groupBy('month')
             ->get()
