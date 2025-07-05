@@ -16,6 +16,7 @@ use App\Livewire\Customers\CustomerShow;
 use App\Livewire\Purchases\PurchasePage;
 use App\Livewire\Purchases\PurchaseShow;
 use App\Livewire\Suppliers\SupplierPage;
+use App\Http\Controllers\LabelController;
 use App\Livewire\Categories\CategoryPage;
 use App\Livewire\Purchases\PurchaseCreate;
 use App\Livewire\Purchases\PurchaseUpdate;
@@ -53,6 +54,9 @@ Route::middleware('auth')->group(function () {
 
         // products
         Route::get('products', ProductPage::class)->name('products');
+
+        // products label
+        Route::get('products/{slug}/label', [LabelController::class,'print'])->name('products.label');
 
     });
 
