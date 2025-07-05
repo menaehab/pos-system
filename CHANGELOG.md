@@ -8,3 +8,7 @@
 - Switched dependencies from CDN to local npm packages for offline support:
   - Font Awesome
   - ApexCharts
+
+## [1.1.0] - 2025-07-05
+### Added
+- Added product label printing with barcode and price.
