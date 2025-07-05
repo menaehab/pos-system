@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sale;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
 require_once(base_path('I18N/Arabic.php'));
 
-class InvoiceController extends Controller
+class LabelController extends Controller
 {
-    public function print($sale_id)
+    public function print($slug)
     {
         try {
-            $sale = Sale::with('saleItems.product')->findOrFail($sale_id);
-            $printFee = env('PRINT_FEE', 0.00);
-            $finalTotal = $sale->total_price + $printFee;
+            $product = Product::where('slug', $slug)->firstOrFail();
+
+            $barcode = new \Milon\Barcode\DNS1D();
 
             $arabic = new \I18N_Arabic('Glyphs');
 
@@ -24,10 +24,9 @@ class InvoiceController extends Controller
                 return $arabic->utf8Glyphs($text);
             });
 
-            $pdf = Pdf::loadView('prints.invoice', compact('sale', 'printFee', 'finalTotal'));
+            $pdf = Pdf::loadView('prints.label', compact('product', 'barcode'));
 
-            return $pdf->stream($sale->invoice_number . '.pdf');
-
+            return $pdf->stream($product->name . '.pdf');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

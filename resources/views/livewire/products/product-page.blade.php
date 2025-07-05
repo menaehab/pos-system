@@ -11,7 +11,26 @@
                 <x-table-cell :value="$product->name ?? __('keywords.not_available')" />
                 <x-table-cell :value="$product->subCategory->name ?? __('keywords.not_available')" />
                 <x-table-cell :value="$product->barcode ?? __('keywords.not_available')" />
-                <x-table-actions type="slug" :slug="$product->slug" :show="true" />
+                <td class="text-center p-3 px-5 flex justify-center gap-2">
+                    <a href="{{ route('products.label', $product->slug) }}"
+                        class="text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded cursor-pointer">
+                        <i class="fa-solid fa-print"></i>
+                    </a>
+                    <a wire:click="$dispatch('showModal', { slug: '{{ $product->slug }}' })"
+                        class="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded cursor-pointer">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a wire:click="$dispatch('editModal', { slug: '{{ $product->slug }}' })"
+                        class="text-sm bg-yellow-500 hover:bg-yellow-700 text-white py-1 px-2 rounded cursor-pointer">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+
+                    <a wire:click="$dispatch('deleteModal', { slug: '{{ $product->slug }}' })"
+                        class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded cursor-pointer">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+
             </tr>
         @endforeach
     </x-table>
